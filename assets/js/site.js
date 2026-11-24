@@ -23,7 +23,7 @@
     var L=root.getAttribute('data-lang');var h=a.getAttribute('href'),p=h.split('#'),base=p[0].split('?')[0];if(L==='uk'||L==='pl'){a.href=base+'?lang='+(L==='uk'?'ua':'pl')+(p[1]?'#'+p[1]:'')}else{a.href=base+(p[1]?'#'+p[1]:'')}
   });
 
-  function yt(id){return '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Pepsi Patrol" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'}
+  function yt(id){return '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin='+encodeURIComponent(location.origin)+'&widget_referrer='+encodeURIComponent(location.href.split('#')[0])+'" title="Pepsi Patrol" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'}
   function media(b){if(b.dataset.yt)return yt(b.dataset.yt);return '<video controls autoplay playsinline src="'+b.dataset.mp4+'"></video>'}
   function load(v){if(v&&v.dataset.src&&!v.getAttribute('src')){v.src=v.dataset.src}}
   function playV(v){if(!v||RM)return;load(v);var p=v.play();if(p&&p.catch)p.catch(function(){})}
